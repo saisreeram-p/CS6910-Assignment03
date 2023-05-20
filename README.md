@@ -4,17 +4,30 @@
 1. Install the required modules/libraries before running
 2. Maintain proper folder structure of the dataset
 ```
-baseDir = inaturalist_12K
-trainDir = baseDir+"/train/"
-testDir = baseDir+"/val/"
+base_dir = aksharantar_sampled/
+base_dir = base_dir+lang+"/" 
+
+train_file = base_dir+lang+"_train.csv"
+val_file = base_dir+lang+"_valid.csv"
+test_file = base_dir+lang+"_test.csv"
+
 ```
-3. To To create a model
+3. To To create a model 
 ```
-model = seq2seq(input_size = len(latin_chars), output_size = len(lang_chars),
-                embedding_size = 64, hidden_size = 256,encoder_layer_size = 2,
-                decoder_layer_size = 3,cell_type = nn.LSTM,
-                beam_width = 1,dropout= 0.2,
-                bidirectional =True ,learning_rate = 0.001)
+if isattention == True :
+    model = Attn2seq(input_size = len(latin_chars), output_size = len(lang_chars),
+                embedding_size = embedding_size, hidden_size = hidden_layer_size,encoder_layer_size = encoder_layers,
+                decoder_layer_size = encoder_layers,cell_type = cell_type,
+                beam_width = 1,dropout= dropout,
+                bidirectional =bidirectional ,learning_rate = learning_rate)
+
+else :
+    model = seq2seq(input_size = len(latin_chars), output_size = len(lang_chars),
+                embedding_size = embedding_size, hidden_size = hidden_layer_size,encoder_layer_size = encoder_layers,
+                decoder_layer_size = decoder_layers,cell_type = cell_type,
+                beam_width = 1,dropout= dropout,
+                bidirectional =bidirectional ,learning_rate = learning_rate)
+
 ```
 4. To train the modal
 ```
@@ -35,17 +48,17 @@ All the argumets are listed below
 | :---: | :----------: | :--------|
 | `-wp`, `--wandb_project` | myprojectname | Project name used to track experiments in Weights & Biases dashboard |
 | `-we`, `--wandb_entity` | myname | Wandb Entity used to track experiments in the Weights & Biases dashboard. |
-| `-dp`, `--dataset_path` | inaturalist_12K | Give folder name only no / |
+| `-dp`, `--dataset_path` | aksharantar_sampled | Give folder name with / |
+| `-la`, `--lang` | hin | language name given in folder  |
 | `-e`, `--epochs` | 1 | Number of epochs to train the model. |
 | `-b`, `--batch_size` | 16 | Batch size used to train the model. |
 | `-lr`, `--learning_rate` | 0.0001 | Learning rate used to optimize model parameters |
-| `-a`, `--activation`| GELU | choices: [ReLU, GELU, SiLU, Mish] |
-| `-bn`, `--batch_normalisation` | False | To add batch_normalisation choices = [True , False] |
-| `-da`, `--data_augmentation` | False | To add data_augmentation choices = [True , False] |
-| `-do`, `--dropout` | False | Value of dropout |
-| `-iz`, `--input_size` | 128 | Shape of the image while loading|
-| `-ks`, `--kernel_size` | 3 | Conv kernel size |
-| `-pks`, `--pool_kernel_size` | 2 | Max2dpool kernel size |
-| `-fz`, `--filter_size` | 64 | filter size |
-| `-fl`, `--filter_organisation` | same | choices = [same, half, double] filter_organisation with same size or half or double |
+| `-cl`, `--cell_type`| LSTM | choices: [LSTM, RNN, GRU] |
+| `-bd`, `--bidirectional` | True |  whether the RNN layers are bidirectional or not choices = [True , False] |
+| `-at`, `--isattention` | True | To add attention layer |
+| `-do`, `--dropout` | 0.1 | Value of dropout |
+| `-el`, `--encoder_layers` | 128 | The number of layers in the encoder |
+| `-dl`, `--decoder_layers` | 3 | The number of layers in the decoder |
+| `-es`, `--embedding_size` | 2 | The size of the embedding vectors for each token |
+| `-hls`, `--hidden_layer_size` | 128 | The size of the hidden state of the RNN cells in the encoder and decoder |
 

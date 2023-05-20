@@ -554,7 +554,7 @@ class Attn2seq(pl.LightningModule):
     val_acc =  torch.stack(self.val_step_acc).mean()
     val_loss =  torch.stack(self.val_step_loss).mean()
     print("train_loss:",train_loss.item(),"train_acc",train_acc.item(),"val_loss:",val_loss.item(),"val_acc",val_acc.item())
-    wandb.log({"train_loss":train_loss.item(),"train_acc":train_acc.item(),"val_loss":val_loss.item(),"val_acc":val_acc.item()})
+    # wandb.log({"train_loss":train_loss.item(),"train_acc":train_acc.item(),"val_loss":val_loss.item(),"val_acc":val_acc.item()})
     self.train_step_acc.clear() 
     self.train_step_loss.clear() 
     self.val_step_acc.clear() 
@@ -659,7 +659,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-wp','--wandb_project',required = False,metavar="",default ='Assignment-031',type=str,help = "Project name used to track experiments in Weights & Biases dashboard" )
 parser.add_argument('-we','--wandb_entity',required = False,metavar="",default ='saisreeram',type=str,help = "Wandb Entity used to track experiments in the Weights & Biases dashboard.")
 parser.add_argument('-dp','--dataset_path',required = False,metavar="",default ='aksharantar_sampled/',type=str,help = 'Give folder name with /')
-parser.add_argument('-la','--lang',required = False,metavar="",default ='hin',type=str,help = 'language name given in folder /')
+parser.add_argument('-la','--lang',required = False,metavar="",default ='hin',type=str,help = 'language name given in folder ')
 
 parser.add_argument('-e','--epochs',required = False,metavar="",default =1,type=int,help = "Number of epochs to train the model." )
 parser.add_argument('-b','--batch_size',required = False,metavar="",default =16,type=int,help = "Batch size used to train the model.")
@@ -668,7 +668,7 @@ parser.add_argument('-lr','--learning_rate',required = False,metavar="",default 
 parser.add_argument('-cl','--cell_type',required = False,metavar="",default ='LSTM',type=str,choices = ["RNN", "GRU", "LSTM"],help = 'choices: ["RNN", "GRU", "LSTM"]')
 
 parser.add_argument('-bd','--bidirectional',required = False,metavar="",default =True,type=str,choices = [True,False],help = 'choices: [True,False]')
-parser.add_argument('-do','--dropout',required = False,metavar="",default =0.4,type=float,help = 'Value of dropout ')
+parser.add_argument('-do','--dropout',required = False,metavar="",default =0.1,type=float,help = 'Value of dropout ')
 
 parser.add_argument('-at','--isattention',required = False,metavar="",default =True,type=str,choices = [True,False],help = 'choices: [True,False]')
 
