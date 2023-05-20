@@ -667,10 +667,10 @@ parser.add_argument('-b','--batch_size',required = False,metavar="",default =16,
 parser.add_argument('-lr','--learning_rate',required = False,metavar="",default =0.0001,type=float,help = "Learning rate used to optimize model parameters" )
 parser.add_argument('-cl','--cell_type',required = False,metavar="",default ='LSTM',type=str,choices = ["RNN", "GRU", "LSTM"],help = 'choices: ["RNN", "GRU", "LSTM"]')
 
-parser.add_argument('-bd','--bidirectional',required = False,metavar="",default =True,type=str,choices = [True,False],help = 'choices: [True,False]')
+parser.add_argument('-bd','--bidirectional',required = False,metavar="",default =True,type=bool,choices = [True,False],help = 'choices: [True,False]')
 parser.add_argument('-do','--dropout',required = False,metavar="",default =0.1,type=float,help = 'Value of dropout ')
 
-parser.add_argument('-at','--isattention',required = False,metavar="",default =True,type=str,choices = [True,False],help = 'choices: [True,False]')
+parser.add_argument('-at','--isattention',required = False,metavar="",default =True,type=bool,choices = [True,False],help = 'choices: [True,False]')
 
 parser.add_argument('-el','--encoder_layers',required = False,metavar="",default =3,type=int,help = 'The number of layers in the encoder ')
 parser.add_argument('-dl','--decoder_layers',required = False,metavar="",default =2,type=int,help = 'The number of layers in the decoder')

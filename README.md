@@ -40,7 +40,7 @@ trainer.fit(model, train_dataloader,val_dataloader)
  ```
 python train.py --wandb_entity myname --wandb_project myprojectname
 
-python train.py -dp inaturalist_12K -e 5 -b 16 -lr 0.00001 -a GELU -bn True -da False -do 0.3 -iz 256 -ks 3 -pks 3 -fz 64 -fl same
+python train.py -dp aksharantar_sampled/ -la hin -e 5 -b 128 -lr 0.0001 -cl GRU -bd True -at True -do 0.2 -el 3 -dl 3 -es 16 -hls 128
  ```
 All the argumets are listed below 
 
@@ -57,8 +57,8 @@ All the argumets are listed below
 | `-bd`, `--bidirectional` | True |  whether the RNN layers are bidirectional or not choices = [True , False] |
 | `-at`, `--isattention` | True | To add attention layer |
 | `-do`, `--dropout` | 0.1 | Value of dropout |
-| `-el`, `--encoder_layers` | 128 | The number of layers in the encoder |
-| `-dl`, `--decoder_layers` | 3 | The number of layers in the decoder |
-| `-es`, `--embedding_size` | 2 | The size of the embedding vectors for each token |
+| `-el`, `--encoder_layers` | 3 | The number of layers in the encoder |
+| `-dl`, `--decoder_layers` | 2 | The number of layers in the decoder |
+| `-es`, `--embedding_size` | 64 | The size of the embedding vectors for each token |
 | `-hls`, `--hidden_layer_size` | 128 | The size of the hidden state of the RNN cells in the encoder and decoder |
 
