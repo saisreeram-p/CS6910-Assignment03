@@ -1,6 +1,6 @@
 # CS6910 Assignment 3
 ## Author : P.Sai Sree Ram CS22M076
-### Instructions to create a model , train , predict CNN Network :
+### Instructions to create a model , train , predict Network :
 1. Install the required modules/libraries before running
 2. Maintain proper folder structure of the dataset
 ```
@@ -61,4 +61,5 @@ All the argumets are listed below
 | `-dl`, `--decoder_layers` | 2 | The number of layers in the decoder |
 | `-es`, `--embedding_size` | 64 | The size of the embedding vectors for each token |
 | `-hls`, `--hidden_layer_size` | 128 | The size of the hidden state of the RNN cells in the encoder and decoder |
+
 
