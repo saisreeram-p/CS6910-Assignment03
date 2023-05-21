@@ -35,8 +35,12 @@ trainer = pl.Trainer(max_epochs = 20)
 trainer.fit(model, train_dataloader,val_dataloader)
 
 ```
+5. To Predict on data create a tensor and call model.forward
+```
+output = model.forward(latin_tensor,tf=0)
 
-5. To run the train.py
+```
+6. To run the train.py
  ```
 python train.py --wandb_entity myname --wandb_project myprojectname
 
@@ -62,4 +66,6 @@ All the argumets are listed below
 | `-es`, `--embedding_size` | 64 | The size of the embedding vectors for each token |
 | `-hls`, `--hidden_layer_size` | 128 | The size of the hidden state of the RNN cells in the encoder and decoder |
 
+
+### Output csv files are in respective folders:
 
